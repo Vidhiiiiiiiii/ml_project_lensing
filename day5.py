@@ -46,6 +46,6 @@ print("-"*40)
 
 accuracy=accuracy_score(y_test,predictions)
 print("Accuracy:",accuracy)
-print("-"*40)
+print("-"*40 )
 
 print("DONE: The model learned from data.")
