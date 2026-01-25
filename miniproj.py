@@ -1,5 +1,5 @@
 import requests
-# API_KEY="d71942627babc7caad0c8c9552c89081"
+
 import os
 from dotenv import load_dotenv
 
@@ -7,7 +7,7 @@ load_dotenv()
 
 API_KEY=os.getenv("API_KEY")
 
-CITY="Delhi"
+CITY="Thrissur"
 
 url=f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
@@ -20,8 +20,24 @@ print("Status code:",response.status_code)
 
 
 data=response.json()
-# print("Raw response text:")
-# print(response.text)
-# print("Status code:",response.status_code)
-print("\nRaw JSON data:")
-print(data)
+
+city=data["name"]
+temp=data["main"]["temp"]
+feels_like=data["main"]["feels_like"]
+humidity=data["main"]["humidity"]
+pressure=data["main"]["pressure"]
+weather_main=data["weather"][0]["main"]
+description=data["weather"][0]["description"]
+wind_speed=data["wind"]["speed"]
+
+print("\n====== WEATHER REPORT ======")
+print(f"City        : {city}")
+print(f"Temperature : {temp} °C") 
+print(f"Feels Like  : {feels_like} °C")
+print(f"Humidity    : {humidity} %")
+print(f"Pressure    : {pressure} hPa")
+print(f"Condition   : {weather_main} ({description})")
+print(f"Wind Speed  : {wind_speed} m/s")
+print("============================")
+# print("\nRaw JSON data:")
+# print(data)
