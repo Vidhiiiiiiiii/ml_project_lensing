@@ -7,7 +7,8 @@ load_dotenv()
 
 API_KEY=os.getenv("API_KEY")
 
-CITY="Thrissur"
+# CITY="Thrissur"
+CITY=input("Enter city name: ").strip()
 
 url=f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
