@@ -1,6 +1,8 @@
 import requests
 
 import os
+import pandas as pd
+from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,6 +33,30 @@ weather_main=data["weather"][0]["main"]
 description=data["weather"][0]["description"]
 wind_speed=data["wind"]["speed"]
 
+now=datetime.now()
+date=now.strftime("%Y-%m-%d")
+time=now.strftime("%H:%M:%S")
+
+weather_row={
+    "date":date,
+    "time":time,
+    "city":city,
+    "temp":temp,
+    "feels_like":feels_like,
+    "humidity":humidity,
+    "pressure":pressure,
+    "wind_speed":wind_speed,
+    "weather_main":weather_main
+}
+
+df=pd.DataFrame([weather_row])
+file_name="weather_data.csv"
+
+if os.path.exists(file_name):
+    df.to_csv(file_name,mode="a",header=False,index=False)
+else:
+    df.to_csv(file_name,index=False)
+
 print("\n====== WEATHER REPORT ======")
 print(f"City        : {city}")
 print(f"Temperature : {temp} °C") 
@@ -40,5 +66,5 @@ print(f"Pressure    : {pressure} hPa")
 print(f"Condition   : {weather_main} ({description})")
 print(f"Wind Speed  : {wind_speed} m/s")
 print("============================")
-# print("\nRaw JSON data:")
-# print(data)
+
+print("Saved to weather_data.csv ✅")
