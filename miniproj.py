@@ -1,11 +1,10 @@
 import requests
-
 import os
 import pandas as pd
 from datetime import datetime
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv()         
 
 API_KEY=os.getenv("API_KEY")
 

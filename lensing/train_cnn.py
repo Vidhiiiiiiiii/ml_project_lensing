@@ -56,6 +56,7 @@ history=model.fit(
     epochs=10
 )
 
-model.save("lensing/lens_classifier.h5")
+model.save("lensing/lens_classifier.keras")
+print(train_data.class_indices)
 
 print("Model trained & saved 🚀")

@@ -31,8 +31,12 @@ def generate_unlensed(size=128):
 
             if dist<15:
                 img[i,j]=1
-
-    img +=np.random.normal(0,0.05,img.shape)
+# stronger random noise
+    img +=np.random.normal(0,0.15,img.shape)
+    # random brightness change
+    img=img*np.random.uniform(0.7,1.3)
+    # clip values (keep btw 0nd1)
+    img=np.clip(img,0,1)
     return img
 NUM_IMAGES = 50
 

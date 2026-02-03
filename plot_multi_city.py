@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 df=pd.read_csv("weather_data.csv")
-
+df["time"]=df["time"].str.replace("::",":",regex=False)
 df["datetime"]=pd.to_datetime(df["date"]+" "+df["time"])
 
 df=df.sort_values("datetime")
