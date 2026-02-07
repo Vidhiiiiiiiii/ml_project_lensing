@@ -1,1 +1,16 @@
 .env
+# Ignore datasets
+lensing/real_data/
+lensing/train_data/
+all_fits/
+all_png/
+*.fits
+*.png
+*.jpg
+*.jpeg
+weather_data.csv
+
+# Python junk
+__pycache__/
+*.pyc
+.env
